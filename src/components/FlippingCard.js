@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const FlippingCard = ({ frontImageUrl }) => {
+const FlippingCard = ({ frontImageUrl, title, items }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleFlip = () => {
@@ -21,13 +21,11 @@ const FlippingCard = ({ frontImageUrl }) => {
           <img src={frontImageUrl} alt="Card front" className="flip-card-image" />
         </div>
         <div className="flip-card-back dark">
-          <h2>Overview</h2>
+          <h2>{title}</h2>
           <ol>
-            <li>A sandbox for me to experiment React</li>
-            <li>A space to level up my frontend skills</li>
-            <li>Recreating interesting CSS designs I learnt from mentors</li>
-            <li>A portfolio showcasing my projects and experiences</li>
-            <li>Tracking my progress as a web developer</li>
+            {items.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ol>
         </div>
       </motion.div>

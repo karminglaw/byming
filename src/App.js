@@ -1,28 +1,48 @@
+import React, { useEffect } from 'react';
+import Lenis from '@studio-freight/lenis'
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Projects from "./components/Projects";
+import Experience from "./components/Experience";
 import "./components/css/styles.css";
-import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
-
 
 function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 0.8,  // Reduced from 1.2 to 0.8
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1.5,  // Increased from 1 to 1.5
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    })
 
-  const lenis = useLenis(({ scroll }) => {
-    // called every scroll
-  })
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
 
   return (
-    <ReactLenis root>
     <div className="App">
       <header>
-      <Navbar/>
+        <Navbar/>
       </header>
       <main>
-      <Home/>
-      <Projects/>
+        <Home/>
+        <Experience/>
+        <Projects/>
       </main>
     </div>
-    </ReactLenis>
   );
 }
 
