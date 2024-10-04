@@ -10,12 +10,12 @@ const Navbar = () => {
       <nav className='header-section'>
         <div className='header-container'>
           <div className='header-menu-left'>
-            <h3>By Ming.</h3>
+            <h3>By Ming</h3>
           </div>
         </div>
         <div 
           onClick={() => setIsActive(!isActive)} 
-          className="button"
+          className={`button ${isActive ? 'active' : ''}`}
         >
           <div className={`burger ${isActive ? 'burgerActive' : ''}`}></div>
         </div>

@@ -5,6 +5,9 @@ import Home from "./components/Home";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import "./components/css/styles.css";
+import "./components/css/ScrollSections.css";
+import ScrollSections from './components/Home1';
+import Who from './components/Who';
 
 function App() {
   useEffect(() => {
@@ -38,9 +41,11 @@ function App() {
         <Navbar/>
       </header>
       <main>
-        <Home/>
+        {/* <Home/>
         <Experience/>
-        <Projects/>
+        <Projects/> */}
+        <ScrollSections/>
+
       </main>
     </div>
   );
